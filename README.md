@@ -4,7 +4,11 @@ This is a test implementation of the sample app of the [Rocket framework](https:
 
 ## Ignite
 
-To run the app locally is necessary to have installed a nightly version of Rust, as specified in the [documentation](https://rocket.rs/v0.4/guide/getting-started/), so you can start the server with the command:
+To run the app locally is necessary to have installed a nightly version of Rust, as specified in the [documentation](https://rocket.rs/v0.4/guide/getting-started/) and have an `upload` folder in your root directory in order to make this working:
+```bash
+$ mkdir upload
+```
+so you can start the server with the command:
 ```bash
 $ cargo run
 ```
