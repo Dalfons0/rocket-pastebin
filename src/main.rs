@@ -10,12 +10,12 @@ use paste_id::PasteID;
 
 use std::io;
 use std::path::Path;
+use std::fs::File;
 
 use rocket::Data;
-use rocket::http::RawStr;
 
 fn main() {
-    rocket::ignite().mount("/", routes![index, upload]).launch();
+    rocket::ignite().mount("/", routes![index, upload, retrieve]).launch();
 }
 
 #[get("/")]
@@ -39,7 +39,13 @@ fn upload(paste: Data) -> io::Result<String> {
     let id = PasteID::new(10);
     let path = format!("upload/{}", id);
     let url = format!("{host}/{id}\n", host = "http://localhost:8000", id = id);
-    
+
     paste.stream_to_file(Path::new(&path))?;
     Ok(url)
+}
+
+#[get("/<id>")]
+fn retrieve(id: PasteID) -> Option<File> {
+    let filename = format!("upload/{id}", id = id);
+    File::open(&filename).ok()
 }
