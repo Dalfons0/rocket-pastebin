@@ -1,0 +1,9 @@
+[package]
+name = "hello-rocket"
+version = "0.1.0"
+authors = ["CORP\\dalfonso <david.alfonso-garcia@capgemini.com>"]
+edition = "2018"
+
+[dependencies]
+rocket = "0.4.1"
+rand = "0.6"
